@@ -34,11 +34,12 @@ if __name__ == "__main__":
             username = input("Please enter your username:")
             email = input("please enter your email:")
             deposite_amount = int(input("Please enter your initial deposite amount:"))
-            register_status = Register.register(account_no=account_no,
-                                                passeword = password,
+            register_obj = Register()
+            register_status = register_obj.register(account_no=account_no,
+                                                password = password,
                                                 username = username,
                                                 email = email,
-                                                deposte_amount = deposite_amount)
+                                                deposite_amount = deposite_amount)
             print(register_status)
         except Exception as e:
             print(f"Registration failed atm/app.py: {e}")

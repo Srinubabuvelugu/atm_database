@@ -1,28 +1,10 @@
-
-
-
-import data as d
-from exception import InvalidAccountError, InsufficientBalanceError, InvalidAmountError
+from database.withdraw import Withdraw
 
 def withdraw(account: int, amount: int):
+    # creating object for withdraw class
+    try:
+        withdraw_obj = Withdraw()
+        return withdraw_obj.withdrawAmount(account_no=account, withdraw_amount=amount)
+    except Exception as e:
+        return f"Something wrong in atm/withdraw.withdraw: {e}"
     
-    if not d.tab(account):
-        raise InvalidAccountError("User not found. Please check account number.")
-
-    if amount <= 0:
-        raise InvalidAmountError("Withdrawal amount must be greater than zero.")
-
-    curr_balance = d.updt(account=account, index=2)
-
-
-    if curr_balance < amount:
-        raise InsufficientBalanceError("Insufficient funds for this transaction.")
-
-    
-    new_balance = curr_balance - amount
-    d.updt(account=account, value=new_balance, index=2)
-
-    
-   
-
-    return f" Withdrawal successful! Current balance: {new_balance}"
