@@ -2,7 +2,9 @@ from database.databaseConnection import database_config, cursor
 from database.utility import checkAccountStatus
 # creating login class
 class Login:
-    def login(account_no:int, password:str):
+    def __init__(self):
+        pass
+    def login(self,account_no:int, password:str):
         try:
             if checkAccountStatus(account_no= account_no):
                 # get password from database

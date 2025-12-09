@@ -16,7 +16,7 @@ class Deposite:
                 updated_amount = current_amount + deposite_amount
                 # update in transaction table and users table
                 setAmountInDB(account_no=account_no, \
-                              amount=updated_amount, transaction_type="DEPOSITE")
+                              amount=deposite_amount, transaction_type="DEPOSITE")
                 return f"Deposite successful and current balance is {updated_amount}"
                 
             else:

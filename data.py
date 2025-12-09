@@ -1,33 +1,19 @@
-
-account_table = {
-    12345: "abcd",
-    12346: "abce"
-}
-
-users_table = {
-    12345: ["pavan", "123@gmail.com", 300],
-    12346: ["ravi", "ravi@gmail.com", 5000]
-}
-
-# Check if account exists
-def tab(account):
-    return account in account_table
-
-# Get a value from users_table
-def ta(account, index):
-    return users_table[account][index] if account in users_table else None
-
-# Update a value in users_table
-def updt(account, value=None, index=0):
-    if account in users_table:
-        if value is not None:
-            users_table[account][index] = value
-        return users_table[account][index]
-    return None
+from database.ministatement import Ministatement
 
 #mini statement
 def ministatement(account:int):
-    return "Development Under process..."
+    ministatement_obj = Ministatement()
+    transactions = ministatement_obj.get_ministatement(account_no=account)
+    if type(transactions) == list:
+        print("----------Ministatement----------")
+        for trans in transactions:
+            print(f"Transactions ID:{trans[0]} - Date:{trans[4]} \
+                  - Type:{trans[2]} - Amount:{trans[3]}")
+    else:
+        print(transactions)
+    return True
+
+                                                       
     
 #logout function definition
 def logout():
